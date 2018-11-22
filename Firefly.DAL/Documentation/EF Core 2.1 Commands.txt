@@ -1,0 +1,36 @@
+﻿// Install Microsoft.EntityFrameworkCore.Tools
+Install-Package Microsoft.EntityFrameworkCore.Tools
+
+// Installing NuGet package Npgsql.EntityFrameworkCore.PostgreSQL
+Install-Package  Npgsql.EntityFrameworkCore.PostgreSQL
+
+// Install Microsoft.EntityFrameworkCore.Design
+Install-Package Microsoft.EntityFrameworkCore.Design
+
+// Run to install the new packages.
+dotnet restore
+
+// Alex: build the solution in order to get and set dependencies correctly
+
+//****************************************
+
+// Run to scaffold a migration and create the initial set of tables for the
+model.
+dotnet ef migrations add InitialCreate
+// Or
+Add-Migration InitialCreate
+
+// Run to apply the new migration to the database. This command creates the
+//database before applying migrations.
+dotnet ef database update
+// or
+Update-Database
+
+// Run to scaffold a new migration after changes to the model.
+dotnet ef migrations add
+
+// Run to apply the schema changes to the database.
+dotnet ef database update
+
+// EF Core uses a __EFMigrationsHistory table in the database to keep track of which migrations have already
+been applied to the database.
